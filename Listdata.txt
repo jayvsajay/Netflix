@@ -1,0 +1,45 @@
+List schema data
+
+   "title:"Awesome Comedy",
+   "type":"Movies",
+   "genre":"Comedy"
+   "content":["636212f16fbc1a02be029220","63626132b4cd4d951eefb769","636351272ae2e2557bb4af33","6363514a2ae2e2557bb4af35","6363515d2ae2e2557bb4af37"]
+   
+   "title":"Awesome Documentry",
+   "type":"Movies",
+   "genre":"Documentry",
+   "content":["636351962ae2e2557bb4af39","636351b72ae2e2557bb4af3b","636351d62ae2e2557bb4af3d","636352042ae2e2557bb4af3f","6363525c2ae2e2557bb4af41"]
+   
+   
+   "titile":"Awesome Sports",
+   "type":" Movies",
+   "genre":"Sports",
+    "content":["636352872ae2e2557bb4af43","636352a92ae2e2557bb4af45","636352da2ae2e2557bb4af47","636352f32ae2e2557bb4af49","636353252ae2e2557bb4af4b"]
+   
+   
+   "title":"Awesome Series",
+   "type":"Series",
+   "genre":"Adventure",
+   "content":["6363535f0fc485aea0410f59"]
+   
+   "title":"Awesome Series 1",
+   "type":"Series",
+   "genre":"Romantic",
+   "content":["636353720fc485aea0410f5b"]
+   
+   "title":"Awesome Series 2",
+   "type":"Series",
+   "genre":"Action",
+   "content":["6363538f0fc485aea0410f5d"]
+   
+   "title":"Awesome Series 3",
+   "type":"Series",
+   "genre":"Drama"
+   "content":["636353af0fc485aea0410f5f"]
+   
+   "title":"Awesome Series 4",
+   "type":"Series",
+   "genre":"Horror",
+   "content":["636353c90fc485aea0410f61"]
+   
+   
