@@ -1,47 +1,23 @@
 import React from 'react'
 import './user.css';
-import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Publish } from '@material-ui/icons';
 function User() {
+  const location = useLocation();
+  const user = location.state.user;
   return (
     <div className='user'>
       <div className='userTitleContainer'>
         <h3 className='userTitle'>Edit User</h3>
         <Link to='/newuser'>
-        <button className='userButton'>Create</button>
+        <button className='userBtn'>Create</button>
         </Link>
        </div> <div className='userContainer'>
           <div className='userShow'>
           <div className='userShowTop'>
-              <img src='' alt='' className='userShowImg'/>
+            <img src={user.profilePic || '/avatar.jpeg'} alt='' className='userShowImg'/>
               <div className='userShowTopTitle'>
-                <spn className='userShowusername'>Ajay</spn>
-                <span className='userShowPos'>Software</span> 
-              </div>
-            </div>
-            <div className='userShowButton'>
-              <span className='userShowTitle'>Account details</span>
-              <div className='userShowInfo'>
-                <PermIdentityIcon className='userShowInfoIcon'/>
-                <span className='userShowInfoTitle'>xsdc,jdbchj</span>
-              </div>
-
-              <div className='userShowInfo'>
-                <PermIdentityIcon className='userShowInfoIcon'/>
-                <span className='userShowInfoTitle'>xsdc,jdbchj</span>
-              </div>
-              <div className='userShowInfo'>
-                <PermIdentityIcon className='userShowInfoIcon'/>
-                <span className='userShowInfoTitle'>xsdc,jdbchj</span>
-              </div>
-              <div className='userShowInfo'>
-                <PermIdentityIcon className='userShowInfoIcon'/>
-                <span className='userShowInfoTitle'>xsdc,jdbchj</span>
-              </div>
-              <div className='userShowInfo'>
-                <PermIdentityIcon className='userShowInfoIcon'/>
-                <span className='userShowInfoTitle'>xsdc,jdbchj</span>
+                <spn className='userShowusername'>{user.username}</spn> 
               </div>
             </div>
           </div> 
@@ -54,48 +30,26 @@ function User() {
                 <label>Username</label>
                 <input
                   type="text"
-                  placeholder="annabeck99"
+                  placeholder={user.username}
                   className="userUpdateInput"
                 />
               </div>
-              <div className="userUpdateItem">
-                <label>Full Name</label>
-                <input
-                  type="text"
-                  placeholder="Anna Becker"
-                  className="userUpdateInput"
-                />
-              </div>
+
               <div className="userUpdateItem">
                 <label>Email</label>
                 <input
                   type="text"
-                  placeholder="annabeck99@gmail.com"
+                  placeholder={user.email}
                   className="userUpdateInput"
                 />
               </div>
-              <div className="userUpdateItem">
-                <label>Phone</label>
-                <input
-                  type="text"
-                  placeholder="+1 123 456 67"
-                  className="userUpdateInput"
-                />
-              </div>
-              <div className="userUpdateItem">
-                <label>Address</label>
-                <input
-                  type="text"
-                  placeholder="New York | USA"
-                  className="userUpdateInput"
-                />
-              </div>
+              
             </div>
             <div className="userUpdateRight">
               <div className="userUpdateUpload">
                 <img
                   className="userUpdateImg"
-                  src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                  src={user.profilePic || '/avatar.jpeg'}
                   alt=""
                 />
                 <label htmlFor="file">

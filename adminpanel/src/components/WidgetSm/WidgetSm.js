@@ -1,54 +1,69 @@
-import { Visibility } from '@material-ui/icons'
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import './widgetSm.css'
-function WidgetSm() {
+import "./widgetSm.css";
+import { Visibility } from "@mui/icons-material";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+export default function WidgetsSm() {
+  const [users, setUsers] = useState([]);
 
-    const [users,setUsers] = useState([])
-
-    useEffect(()=>{
-
-        const getuserdata = async () => {
-            try {
-                const res = await axios.get('/users?new=true',{
-                    headers:{
-                        authorization:'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjRiNjRkNGEwMzcwNDAwNGMyN2U4OCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY2ODUxMzYwNiwiZXhwIjoxNjY4OTQ1NjA2fQ.w-twfyu9AQWhfpMNqM8Yz-0FnIlhJdR7NMoepTU4l4o'
-                    },
-                });
-                setUsers(res.data)
-            }catch(e){
-                console.log(e)
-            }
-        }
-        getuserdata();
-    },[])
-    console.log(users)
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const res = await axios.get("/user?new=true", {
+          headers: {
+            authorization:
+              "Bearer " + JSON.parse(localStorage.getItem("user")).access_token,
+          },
+        });
+        console.log(res.data);
+        setUsers(res.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getUsers();
+  }, []);
   return (
-    <div className='widgetsm'>
-        <span className='widgetTitle'>New Join Memeber</span>
-        <div className='widgetItem'>
-            <ul className='widgetListItem'>
-                {users.map(user => (
-                <li className='widgetList'>
-                    <img className='widgetimage'
-                     src={user.profilePic || 'https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'}
-                      alt=''/>
-                    <div className='widgetsmUser'>
-                    <span className='widgetName'>{user.username}</span>
-                   
-                    </div>
-                    <button className='widgetButton'>
-                    <Visibility className='Icon'/>
-                        display
-                        </button>
-                 
-                </li>
-            ))}
-               
-            </ul>
-        </div>
-    </div>
-  )
-}
+    <div className="widgetSm">
+      <div className="widgetSmTitle">New join members</div>
+      <table className="widgetsSmList">
+        <tr>
+          <th className="widgetSmTh">Image</th>
+          <th className="widgetSmTh">User</th>
+          <th className="widgetSmTh">Email</th>
+          <th className="widgetSmTh">Action</th>
+        </tr>
+        {users.map((user) => (
+          <tr>
+            <td>
+              <img
+                src={
+                  user.profilePic ||
+                  "/avatar.jpeg"
+                }
+                alt=""
+                className="widgetSmImg"
+              />
+            </td>
 
-export default WidgetSm
+            <td className="widgetSmUser">
+              <span className="widgetSmUserName">{user.username}</span>
+            </td>
+            <td className="widgetSmUser">
+              <span className="widgetSmUserName">{user.email}</span>
+            </td>
+            <td>
+              <Link className="link" to={"/user/" + user._id} state={user}>
+                <button className="widgetSmButton">
+                  <Visibility />
+                  display
+                </button>
+              </Link>
+            </td>
+          </tr>
+        ))}
+      </table>
+    </div>
+  );
+}
